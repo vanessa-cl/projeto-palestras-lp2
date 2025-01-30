@@ -3,8 +3,6 @@ package main.java.cli;
 import main.java.entities.Evento;
 import main.java.entities.Palestra;
 import main.java.utils.EventoUtil;
-import main.java.utils.PalestraUtil;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -70,9 +68,28 @@ public class Menu {
     }
 
     public void exibirMenuParticipante() {
-        System.out.println("1 - Realizar inscrição em palestra");
-        System.out.println("2 - Exibir lista de palestras");
-        System.out.println("3 - Exibir lista de eventos");
-        System.out.println("4 - Sair");
+        int opcao;
+        boolean voltar = false;
+        while (!voltar) {
+            System.out.println("Escolha uma das opções abaixo:");
+            System.out.println("1 - Realizar inscrição em palestra");
+            System.out.println("2 - Exibir lista de eventos e palestras");
+            System.out.println("3 - Voltar");
+            opcao = s.nextInt();
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite o nome da palestra:");
+                    String nomePalestra = s.next();
+                case 2:
+                    eventoUtil.exibirEventos();
+                    break;
+                case 3:
+                    voltar = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+
+            }
+        }
     }
 }

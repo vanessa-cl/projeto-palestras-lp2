@@ -21,15 +21,7 @@ public class Evento {
         return agendaPalestras;
     }
 
-//    public String imprimirAgendaPalestras() {
-//        String agenda = "";
-//        for (Palestra palestra : agendaPalestras) {
-//            agenda += palestra.getTitulo() + " ";
-//        }
-//        return agenda;
-//    }
-
-//    public String toString() {
-//        return "Evento: " + nome + " - Palestras: " + imprimirAgendaPalestras();
-//    }
+    public String toString() {
+        return "Evento: " + nome + "\n" + agendaPalestras.exibirPalestras();
+    }
 }

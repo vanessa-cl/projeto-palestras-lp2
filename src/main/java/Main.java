@@ -1,13 +1,7 @@
 package main.java;
 
 import main.java.cli.Menu;
-import main.java.entities.Evento;
-import main.java.enums.CargoEnum;
-import main.java.utils.EventoUtil;
-
 import java.util.Scanner;
-
-import static main.java.enums.CargoEnum.COLABORADOR;
 
 public class Main {
 
@@ -30,7 +24,7 @@ public class Main {
                     menu.exibirMenuColaborador();
                     break;
                 case "B":
-                    //menu.exibirMenuParticipante();
+                    menu.exibirMenuParticipante();
                     break;
                 case "C":
                 default:

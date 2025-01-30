@@ -2,7 +2,6 @@ package main.java.utils;
 
 import main.java.entities.Evento;
 import main.java.entities.Palestra;
-
 import java.util.ArrayList;
 
 public class EventoUtil {
@@ -13,7 +12,6 @@ public class EventoUtil {
     public void adicionarEvento(Evento evento) {
         eventos.add(evento);
         try {
-            System.out.println(evento.toString());
             boolean resultado = fileUtil.escreverArquivo(arquivo, evento);
             if (resultado) {
                 System.out.println("Evento adicionado com sucesso!");
@@ -43,6 +41,12 @@ public class EventoUtil {
         }
     }
 
-    // TODO: exibir lista de eventos
+    public void exibirEventos() {
+        for (Evento evento : eventos) {
+            System.out.println(evento.toString());
+            System.out.println("________________________________________________________________________");
+        }
+    }
+
     // TODO: implementar método para ler arquivo eventos.txt
 }

@@ -25,6 +25,22 @@ public class PalestraUtil {
         }
     }
 
-    // TODO: exibir lista de palestras de determinado evento
+    public String exibirPalestras() {
+        String palestrasString = "Lista de Palestras:\n";
+        for (Palestra palestra : palestras) {
+            palestrasString += palestra.toString() + "\n________________________________________________________________________";
+        }
+        return palestrasString;
+    }
+
+    public Palestra buscarPalestraPeloTitulo(String titulo) {
+        for (Palestra palestra : palestras) {
+            if (palestra.getTitulo().equals(titulo)) {
+                return palestra;
+            }
+        }
+        return null;
+    }
+
     // TODO: implementar método para ler arquivo palestras.txt
 }
