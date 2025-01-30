@@ -3,6 +3,7 @@ package main.java.entities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 public class Palestra {
     private String titulo;
@@ -12,6 +13,7 @@ public class Palestra {
     private LocalTime horarioFim;
     private String local;
     private int limiteOuvintes;
+    private ArrayList<Ouvinte> listaParticipantes;
     private ArrayDeque<Ouvinte> filaEspera;
 
     public Palestra(String titulo, String palestrante, LocalDate data, LocalTime horarioInicio, LocalTime horarioFim, String local, int limiteOuvintes) {
@@ -22,6 +24,7 @@ public class Palestra {
         this.horarioFim = horarioFim;
         this.local = local;
         this.limiteOuvintes = limiteOuvintes;
+        this.listaParticipantes = new ArrayList<>();
         this.filaEspera = new ArrayDeque<>();
     }
 
