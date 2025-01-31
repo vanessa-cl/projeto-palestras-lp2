@@ -56,6 +56,10 @@ public class Palestra {
         return limiteOuvintes;
     }
 
+    public ArrayList<Ouvinte> getListaParticipantes() {
+        return listaParticipantes;
+    }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }

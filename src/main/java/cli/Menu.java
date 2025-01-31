@@ -3,6 +3,7 @@ package main.java.cli;
 import main.java.entities.Evento;
 import main.java.entities.Palestra;
 import main.java.utils.EventoUtil;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -19,11 +20,6 @@ public class Menu {
             System.out.println("1 - Cadastrar evento");
             System.out.println("2 - Cadastrar palestra");
             System.out.println("3 - Voltar");
-//        System.out.println("3 - Cadastrar ouvinte");
-//        System.out.println("4 - Exibir lista de inscritos");
-//        System.out.println("5 - Exibir lista de espera");
-//        System.out.println("6 - Exibir lista de palestras");
-//        System.out.println("7 - Exibir lista de eventos");
             opcao = s.nextInt();
             switch (opcao) {
                 case 1:
@@ -78,8 +74,28 @@ public class Menu {
             opcao = s.nextInt();
             switch (opcao) {
                 case 1:
-                    System.out.println("Digite o nome da palestra:");
-                    String nomePalestra = s.next();
+                    System.out.println("Digite o nome do evento:");
+                    String nomeEvento = s.next();
+                    Evento evento = eventoUtil.buscarEventoPeloNome(nomeEvento);
+                    if (evento != null) {
+                        System.out.println("Digite o título da palestra:");
+                        String tituloPalestra = s.next();
+                        Palestra palestra = evento.getAgendaPalestras().buscarPalestraPeloTitulo(tituloPalestra);
+                        if (palestra != null) {
+                            if (palestra.getListaParticipantes().size() < palestra.getLimiteOuvintes()) {
+                                System.out.println("Inscrição realizada com sucesso!");
+                                // TODO: implementar método para adicionar ouvinte à lista de participantes
+                            } else {
+                                System.out.println("Limite de ouvintes atingido! Deseja se inscrever na lista de espera da palestra? (S/N)");
+                                // TODO: implementar método para adicionar ouvinte à lista de espera
+                            }
+                        } else {
+                            System.out.println("Palestra não encontrada!");
+                        }
+                    } else {
+                        System.out.println("Evento não encontrado!");
+                    }
+
                 case 2:
                     eventoUtil.exibirEventos();
                     break;
