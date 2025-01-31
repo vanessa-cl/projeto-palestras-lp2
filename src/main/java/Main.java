@@ -3,7 +3,6 @@ package main.java;
 import main.java.cli.Menu;
 import main.java.entities.Ouvinte;
 import main.java.enums.CargoEnum;
-import main.java.utils.OuvinteUtil;
 import main.java.utils.UsuarioUtil;
 
 import java.util.Scanner;
@@ -41,7 +40,7 @@ public class Main {
                             menu.exibirMenuColaborador();
                         }
                     } else {
-                        System.out.println("Usuário não encontrado! Cadastre-se antes de logar.");
+                        System.out.println("Usuário não encontrado ou e-mail/senha incorretos! Cadastre-se antes de logar.");
                     }
                     break;
                 case "B":
@@ -51,7 +50,7 @@ public class Main {
                     String nome = s.next();
                     System.out.println("Digite sua senha:");
                     senha = s.next();
-                    usuarioUtil.adicionarUsuario(new Ouvinte(nome, email, senha, CargoEnum.PARTICIPANTE));
+                    usuarioUtil.adicionarUsuario(new Ouvinte(usuarioUtil.getUsuarios().size() + 1, nome, email, senha, CargoEnum.PARTICIPANTE));
                     break;
                 case "C":
                     encerrar = true;

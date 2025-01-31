@@ -2,15 +2,19 @@ package main.java.entities;
 
 import main.java.utils.PalestraUtil;
 
-import java.util.ArrayList;
-
 public class Evento {
+    private int id;
     private String nome;
     private PalestraUtil agendaPalestras;
 
-    public Evento(String nome) {
+    public Evento(int id, String nome) {
+        this.id = id;
         this.nome = nome;
         this.agendaPalestras = new PalestraUtil();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -22,6 +26,7 @@ public class Evento {
     }
 
     public String toString() {
-        return "Evento: " + nome + "\n" + agendaPalestras.exibirPalestras();
+        return "ID: " + id + " - Evento: " + nome;
+//                + agendaPalestras.exibirPalestras();
     }
 }

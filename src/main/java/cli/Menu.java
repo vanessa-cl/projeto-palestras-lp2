@@ -25,7 +25,7 @@ public class Menu {
                 case 1:
                     System.out.println("Digite o nome do evento:");
                     String nomeEvento = s.next();
-                    Evento evento = new Evento(nomeEvento);
+                    Evento evento = new Evento(eventoUtil.getEventos().size() + 1, nomeEvento);
                     eventoUtil.adicionarEvento(evento);
                     break;
                 case 2:

@@ -1,2 +1,2 @@
-Evento: Evento Teste - Palestras: 
-Evento: Evento Teste - Palestras: 
+ID: 1 - Evento: WeekIT
+ID: 2 - Evento: SNCT

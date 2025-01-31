@@ -3,16 +3,22 @@ package main.java.entities;
 import main.java.enums.CargoEnum;
 
 public class Ouvinte {
+    private int id;
     private String nome;
     private String email;
     private String senha;
     private CargoEnum cargo;
 
-    public Ouvinte(String nome, String email, String senha, CargoEnum cargo) {
+    public Ouvinte(int id, String nome, String email, String senha, CargoEnum cargo) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.cargo = cargo;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -32,6 +38,10 @@ public class Ouvinte {
     }
 
     public String toString() {
-        return "Ouvinte: " + nome + " - Email: " + email + " - Cargo: " + cargo + " - Senha: " + senha;
+        return " ID: " + id +
+                " - Nome: " + nome +
+                " - Email: " + email +
+                " - Senha: " + senha +
+                " - Cargo: " + cargo;
     }
 }

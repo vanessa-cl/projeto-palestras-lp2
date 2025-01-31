@@ -1,0 +1,2 @@
+ID: 1 - Nome: Alana - Email: alana@email.com - Senha: 123 - Cargo: PARTICIPANTE
+ID: 3 - Nome: Erica - Email: erica@email.com - Senha: 321 - Cargo: COLABORADOR
