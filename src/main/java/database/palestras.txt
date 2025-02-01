@@ -1,0 +1,2 @@
+ID: 1 - Palestra: Palestra 1 - Palestrante: Palestrante 1 - Data: 2025-02-10 - Horário de início: 8PM - Horário de término: 9PM - Local: Auditório 1 - Limite de ouvintes: 40 - ID Evento: 1
+ID: 2 - Palestra: Palestra 2 - Palestrante: Palestrante 2 - Data: 2025-02-11 - Horário de início: 9PM - Horário de término: 10PM - Local: Auditório 2 - Limite de ouvintes: 50 - ID Evento: 2

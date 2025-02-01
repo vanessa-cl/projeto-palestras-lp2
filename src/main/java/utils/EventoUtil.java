@@ -41,7 +41,7 @@ public class EventoUtil {
     public void adicionarPalestraAoEvento(String nomeEvento, Palestra novaPalestra) {
         Evento evento = buscarEventoPeloNome(nomeEvento);
         if (evento != null) {
-            evento.getAgendaPalestras().adicionarPalestra(novaPalestra, nomeEvento);
+            evento.getAgendaPalestras().adicionarPalestra(novaPalestra);
             // TODO: atualizar arquivo eventos.txt
         }
     }

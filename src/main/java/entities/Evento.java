@@ -10,7 +10,7 @@ public class Evento {
     public Evento(int id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.agendaPalestras = new PalestraUtil();
+        this.agendaPalestras = new PalestraUtil(id);
     }
 
     public int getId() {
@@ -27,6 +27,5 @@ public class Evento {
 
     public String toString() {
         return "ID: " + id + " - Evento: " + nome;
-//                + agendaPalestras.exibirPalestras();
     }
 }

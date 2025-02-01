@@ -47,7 +47,17 @@ public class Menu {
                     String nomeEventoPalestra = s.next();
                     Evento eventoPalestra = eventoUtil.buscarEventoPeloNome(nomeEventoPalestra);
                     if (eventoPalestra != null) {
-                        Palestra novaPalestra = new Palestra(tituloPalestra, palestrante, LocalDate.parse(data), LocalTime.parse(horarioInicio), LocalTime.parse(horarioTermino), local, limiteOuvintes);
+                        Palestra novaPalestra = new Palestra(
+                                eventoPalestra.getAgendaPalestras().getQuantidadePalestras() + 1,
+                                tituloPalestra,
+                                palestrante,
+                                LocalDate.parse(data),
+                                LocalTime.parse(horarioInicio),
+                                LocalTime.parse(horarioTermino),
+                                local,
+                                limiteOuvintes,
+                                eventoPalestra.getId()
+                        );
                         eventoUtil.adicionarPalestraAoEvento(nomeEventoPalestra, novaPalestra);
                     } else {
                         System.out.println("Evento não encontrado! Cadastre o evento antes de cadastrar a palestra.");
