@@ -1,9 +1,11 @@
 package main.java.entities;
 
+import main.java.utils.FilaEsperaUtil;
+import main.java.utils.OuvinteUtil;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 
 public class Palestra {
     private int id;
@@ -15,8 +17,10 @@ public class Palestra {
     private String local;
     private int limiteOuvintes;
     private int idEvento;
-    private ArrayList<Ouvinte> listaParticipantes;
-    private ArrayDeque<Ouvinte> filaEspera;
+    private OuvinteUtil listaOuvintes;
+    private FilaEsperaUtil filaEspera;
+    DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formatadorHora = DateTimeFormatter.ofPattern("ha");
 
     public Palestra(int id, String titulo, String palestrante, LocalDate data, LocalTime horarioInicio, LocalTime horarioFim, String local, int limiteOuvintes, int idEvento) {
         this.id = id;
@@ -28,8 +32,8 @@ public class Palestra {
         this.local = local;
         this.limiteOuvintes = limiteOuvintes;
         this.idEvento = idEvento;
-        this.listaParticipantes = new ArrayList<>();
-        this.filaEspera = new ArrayDeque<>();
+        this.listaOuvintes = new OuvinteUtil(id);
+        this.filaEspera = new FilaEsperaUtil(id);
     }
 
     public int getId() {
@@ -64,8 +68,12 @@ public class Palestra {
         return limiteOuvintes;
     }
 
-    public ArrayList<Ouvinte> getListaParticipantes() {
-        return listaParticipantes;
+    public OuvinteUtil getListaOuvintes() {
+        return listaOuvintes;
+    }
+
+    public FilaEsperaUtil getFilaEspera() {
+        return filaEspera;
     }
 
     public void setTitulo(String titulo) {
@@ -100,9 +108,9 @@ public class Palestra {
         return "ID: " + id +
                 " - Palestra: " + titulo +
                 " - Palestrante: " + palestrante +
-                " - Data: " + data +
-                " - Horário de início: " + horarioInicio +
-                " - Horário de fim: " + horarioFim +
+                " - Data: " + data.format(formatadorData) +
+                " - Horário de início: " + horarioInicio.format(formatadorHora) +
+                " - Horário de fim: " + horarioFim.format(formatadorHora) +
                 " - Local: " + local +
                 " - Limite de ouvintes: " + limiteOuvintes +
                 " - ID Evento: " + idEvento;

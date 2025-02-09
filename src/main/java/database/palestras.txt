@@ -1,2 +1,5 @@
-ID: 1 - Palestra: Palestra 1 - Palestrante: Palestrante 1 - Data: 2025-02-10 - Horário de início: 8PM - Horário de término: 9PM - Local: Auditório 1 - Limite de ouvintes: 40 - ID Evento: 1
-ID: 2 - Palestra: Palestra 2 - Palestrante: Palestrante 2 - Data: 2025-02-11 - Horário de início: 9PM - Horário de término: 10PM - Local: Auditório 2 - Limite de ouvintes: 50 - ID Evento: 2
+ID: 1 - Palestra: Introdução ao Frontend - Palestrante: Vanessa - Data: 10/03/2025 - Horário de início: 7PM - Horário de fim: 8PM - Local: H408 - Limite de ouvintes: 30 - ID Evento: 1
+ID: 2 - Palestra: Palestra 2 - Palestrante: João Manoel - Data: 11/03/2025 - Horário de início: 7PM - Horário de fim: 8PM - Local: H409 - Limite de ouvintes: 35 - ID Evento: 2
+ID: 3 - Palestra: Introdução ao Game Design - Palestrante: Jean Jerri - Data: 15/03/2025 - Horário de início: 8PM - Horário de fim: 10PM - Local: H410 - Limite de ouvintes: 25 - ID Evento: 1
+ID: 4 - Palestra: Palestra lotada - Palestrante: Alana Ágne - Data: 17/03/2025 - Horário de início: 6PM - Horário de fim: 8PM - Local: Auditório Principal - Limite de ouvintes: 1 - ID Evento: 2
+ID: 5 - Palestra: Palestra lotada 2 - Palestrante: Ana Luiza - Data: 18/03/2025 - Horário de início: 7PM - Horário de fim: 8PM - Local: Auditório do CVT - Limite de ouvintes: 1 - ID Evento: 1

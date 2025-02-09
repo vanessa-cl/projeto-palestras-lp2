@@ -12,7 +12,8 @@ public class PalestraUtil {
     ArrayList<Palestra> palestras = new ArrayList<>();
     FileUtil fileUtil = new FileUtil();
     String arquivo = "src/main/java/database/palestras.txt";
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ha");
+    DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formatadorHora = DateTimeFormatter.ofPattern("ha");
 
     public PalestraUtil(int newIdEvento) {
         lerPalestras(newIdEvento);
@@ -23,26 +24,40 @@ public class PalestraUtil {
         return palestras.size();
     }
 
-    public void adicionarPalestra(Palestra palestra) {
+    public boolean adicionarPalestra(Palestra palestra) {
+        boolean resultado = false;
         palestras.add(palestra);
         try {
-            boolean resultadoPalestra = fileUtil.escreverArquivo(arquivo, palestra.toString());
-            if (resultadoPalestra) {
-                System.out.println("Palestra adicionada com sucesso!");
-
-            } else {
-                System.out.println("Erro ao adicionar palestra!");
-            }
+            resultado = fileUtil.escreverArquivo(arquivo, palestra);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Erro ao adicionar palestra!");
         }
+        return resultado;
+    }
+
+    public boolean removerPalestra(int id) {
+        boolean resultado = false;
+        for (Palestra palestra : palestras) {
+            if (palestra.getId() == id) {
+                palestras.remove(palestra);
+                try {
+                    resultado = fileUtil.removerLinhaArquivoPeloId(arquivo, id, 0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Palestra não encontrada!");
+            }
+        }
+        return resultado;
     }
 
     public void exibirPalestras() {
+        System.out.println("Palestras do evento:");
         for (Palestra palestra : palestras) {
             System.out.println(palestra.toString());
         }
+        System.out.println("____________________________________________________________________________________________________________________");
     }
 
     public Palestra buscarPalestraPeloTitulo(String titulo) {
@@ -58,16 +73,14 @@ public class PalestraUtil {
         ArrayList<String> palestrasDB = fileUtil.lerArquivo(arquivo);
         for (String dado : palestrasDB) {
             String[] dadosPalestra = dado.split(" - ");
-            System.out.println("idEvento: " + newIdEvento);
-            System.out.println("dadosPalestra[8]: " + dadosPalestra[8]);
             if (Integer.parseInt(dadosPalestra[8].split(": ")[1]) == newIdEvento) {
                 Palestra novaPalestra = new Palestra(
                         Integer.parseInt(dadosPalestra[0].split(": ")[1]),
                         dadosPalestra[1].split(": ")[1],
                         dadosPalestra[2].split(": ")[1],
-                        LocalDate.parse(dadosPalestra[3].split(": ")[1]),
-                        LocalTime.parse(dadosPalestra[4].split(": ")[1], formatter),
-                        LocalTime.parse(dadosPalestra[5].split(": ")[1], formatter),
+                        LocalDate.parse(dadosPalestra[3].split(": ")[1], formatadorData),
+                        LocalTime.parse(dadosPalestra[4].split(": ")[1], formatadorHora),
+                        LocalTime.parse(dadosPalestra[5].split(": ")[1], formatadorHora),
                         dadosPalestra[6].split(": ")[1],
                         Integer.parseInt(dadosPalestra[7].split(": ")[1]),
                         Integer.parseInt(dadosPalestra[8].split(": ")[1])
@@ -75,8 +88,10 @@ public class PalestraUtil {
                 palestras.add(novaPalestra);
             }
         }
-        exibirPalestras();
     }
 
-    // TODO: implementar método para ler arquivo palestras.txt
+    public ArrayList<Palestra> getPalestras() {
+        return palestras;
+    }
+
 }
