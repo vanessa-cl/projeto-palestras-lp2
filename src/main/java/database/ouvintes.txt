@@ -1,0 +1,5 @@
+ID Usuario: 2 - ID Palestra: 1
+ID Usuario: 3 - ID Palestra: 2
+ID Usuario: 2 - ID Palestra: 3
+ID Usuario: 2 - ID Palestra: 4
+ID Usuario: 3 - ID Palestra: 5
