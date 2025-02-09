@@ -1,12 +1,12 @@
 package main.java.utils;
 
-import main.java.entities.Ouvinte;
+import main.java.entities.Usuario;
 import main.java.enums.CargoEnum;
 
 import java.util.ArrayList;
 
 public class UsuarioUtil {
-    private ArrayList<Ouvinte> usuarios = new ArrayList<>();
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
     FileUtil fileUtil = new FileUtil();
     String arquivo = "src/main/java/database/usuarios.txt";
 
@@ -14,24 +14,20 @@ public class UsuarioUtil {
         lerUsuarios();
     }
 
-    public void adicionarUsuario(Ouvinte usuario) {
+    public boolean adicionarUsuario(Usuario usuario) {
+        boolean resultado = false;
         usuarios.add(usuario);
         try {
-            boolean resultadoUsuario = fileUtil.escreverArquivo(arquivo, usuario.toString());
-            if (resultadoUsuario) {
-                System.out.println("Usuário cadastrado com sucesso! Entre para continuar");
-            } else {
-                System.out.println("Erro ao adicionar usuário!");
-            }
+            resultado = fileUtil.escreverArquivo(arquivo, usuario);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Erro ao adicionar usuário!");
         }
+        return resultado;
     }
 
-    public Ouvinte buscarUsuarioPeloEmailESenha(String email, String senha) {
-        for (Ouvinte usuario : usuarios) {
-            System.out.println(usuario.getEmail());
+    public Usuario buscarUsuarioPeloEmailESenha(String email, String senha) {
+        for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
                 return usuario;
             }
@@ -43,7 +39,7 @@ public class UsuarioUtil {
         ArrayList<String> usuariosDB = fileUtil.lerArquivo(arquivo);
         for (String dado : usuariosDB) {
             String[] dadosUsuario = dado.split(" - ");
-            Ouvinte novoUsuario = new Ouvinte(
+            Usuario novoUsuario = new Usuario(
                     Integer.parseInt(dadosUsuario[0].split(": ")[1]),
                     dadosUsuario[1].split(": ")[1],
                     dadosUsuario[2].split(": ")[1],
@@ -54,8 +50,16 @@ public class UsuarioUtil {
         }
     }
 
-    public ArrayList<Ouvinte> getUsuarios() {
+    public ArrayList<Usuario> getUsuarios() {
         return usuarios;
+    }
+
+    public void exibirUsuarios() {
+        System.out.println("Usuários cadastrados:");
+        for (Usuario usuario : usuarios) {
+            System.out.println(usuario.toString());
+        }
+        System.out.println("____________________________________________________________________________________________________________________");
     }
 
 }
