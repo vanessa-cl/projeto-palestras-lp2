@@ -21,8 +21,7 @@ public class FileUtil {
 
     public boolean escreverArquivo(String arquivo, Object conteudo) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arquivo, true))) {
-            bufferedWriter.write(conteudo.toString());
-            bufferedWriter.newLine();
+            bufferedWriter.write(conteudo.toString() + System.lineSeparator());
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -30,5 +29,39 @@ public class FileUtil {
         return true;
     }
 
+    public boolean removerLinhaArquivoPeloId(String arquivo, int id, int idOpcional) {
+        ArrayList<String> novasLinhas = atualizarLinhasArquivo(arquivo, id, idOpcional);
 
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arquivo))) {
+            for (String linha : novasLinhas) {
+                bufferedWriter.write(linha + System.lineSeparator());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public ArrayList<String> atualizarLinhasArquivo(String arquivo, int id, int idOpcional) {
+        ArrayList<String> linhas = lerArquivo(arquivo);
+        ArrayList<String> novasLinhas = new ArrayList<>();
+        for (String linha : linhas) {
+            String[] dados = linha.split(" - ");
+            int idLinha = Integer.parseInt(dados[0].split(": ")[1]);
+            if (idOpcional != 0) {
+                int idLinhaOpcional = Integer.parseInt(dados[1].split(": ")[1]);
+
+                if (idLinha == id && idLinhaOpcional == idOpcional) {
+                    continue;
+                }
+            } else if (idLinha == id) {
+                continue;
+            }
+            novasLinhas.add(linha);
+        }
+        return novasLinhas;
+    }
 }
+
+
