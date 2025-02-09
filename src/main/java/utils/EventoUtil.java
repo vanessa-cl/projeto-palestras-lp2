@@ -14,19 +14,16 @@ public class EventoUtil {
         lerEventos();
     }
 
-    public void adicionarEvento(Evento evento) {
+    public boolean adicionarEvento(Evento evento) {
+        boolean resultado = false;
         eventos.add(evento);
         try {
-            boolean resultado = fileUtil.escreverArquivo(arquivo, evento);
-            if (resultado) {
-                System.out.println("Evento adicionado com sucesso!");
-            } else {
-                System.out.println("Erro ao adicionar evento!");
-            }
+            resultado = fileUtil.escreverArquivo(arquivo, evento);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Erro ao adicionar evento!");
         }
+        return resultado;
     }
 
     public Evento buscarEventoPeloNome(String nome) {
@@ -38,18 +35,11 @@ public class EventoUtil {
         return null;
     }
 
-    public void adicionarPalestraAoEvento(String nomeEvento, Palestra novaPalestra) {
-        Evento evento = buscarEventoPeloNome(nomeEvento);
-        if (evento != null) {
-            evento.getAgendaPalestras().adicionarPalestra(novaPalestra);
-            // TODO: atualizar arquivo eventos.txt
-        }
-    }
-
     public void exibirEventos() {
+        System.out.println("____________________________________________________________________________________________________________________");
         for (Evento evento : eventos) {
             System.out.println(evento.toString());
-            System.out.println("________________________________________________________________________");
+            evento.getAgendaPalestras().exibirPalestras();
         }
     }
 

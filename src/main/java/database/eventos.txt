@@ -1,2 +1,3 @@
 ID: 1 - Evento: WeekIT
 ID: 2 - Evento: SNCT
+ID: 3 - Evento: Semana de Engenharia Elétrica
