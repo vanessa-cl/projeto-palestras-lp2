@@ -69,6 +69,15 @@ public class PalestraUtil {
         return null;
     }
 
+    public Palestra buscarPalestraPeloId(int id) {
+        for (Palestra palestra : palestras) {
+            if (palestra.getId() == id) {
+                return palestra;
+            }
+        }
+        return null;
+    }
+
     public void lerPalestras(int newIdEvento) {
         ArrayList<String> palestrasDB = fileUtil.lerArquivo(arquivo);
         for (String dado : palestrasDB) {

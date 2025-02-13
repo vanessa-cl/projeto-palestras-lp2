@@ -1,7 +1,6 @@
 package main.java.utils;
 
 import main.java.entities.Evento;
-import main.java.entities.Palestra;
 
 import java.util.ArrayList;
 
@@ -35,11 +34,27 @@ public class EventoUtil {
         return null;
     }
 
-    public void exibirEventos() {
+    public Evento buscarEventoPeloId(int id) {
+        for (Evento evento : eventos) {
+            if (evento.getId() == id) {
+                return evento;
+            }
+        }
+        return null;
+    }
+
+    public void exibirAgendaEventos() {
         System.out.println("____________________________________________________________________________________________________________________");
         for (Evento evento : eventos) {
             System.out.println(evento.toString());
             evento.getAgendaPalestras().exibirPalestras();
+        }
+    }
+
+    public void exibirEventos() {
+        System.out.println("____________________________________________________________________________________________________________________");
+        for (Evento evento : eventos) {
+            System.out.println(evento.toString());
         }
     }
 

@@ -81,9 +81,11 @@ public class MenuColaborador extends Menu {
         System.out.println("Digite o limite de participantes da palestra:");
         int limiteOuvintes = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Digite o nome do evento ao qual a palestra pertence:");
-        String nomeEventoPalestra = scanner.nextLine();
-        Evento eventoPalestra = eventoUtil.buscarEventoPeloNome(nomeEventoPalestra);
+        System.out.println("Digite o ID do evento ao qual a palestra pertence:");
+        eventoUtil.exibirEventos();
+        int idEventoPalestra = scanner.nextInt();
+        scanner.nextLine();
+        Evento eventoPalestra = eventoUtil.buscarEventoPeloId(idEventoPalestra);
 
         if (eventoPalestra == null) {
             System.out.println("Evento não encontrado! Cadastre o evento antes de cadastrar a palestra.");

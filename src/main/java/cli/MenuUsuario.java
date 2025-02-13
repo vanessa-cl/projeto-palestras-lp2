@@ -43,7 +43,7 @@ public class MenuUsuario extends Menu {
                     exibirInscricoes();
                     break;
                 case 4:
-                    eventoUtil.exibirEventos();
+                    eventoUtil.exibirAgendaEventos();
                     break;
                 case 5:
                     voltar = true;
@@ -56,17 +56,21 @@ public class MenuUsuario extends Menu {
     }
 
     public void inscricaoEmPalestra() {
-        System.out.println("Digite o nome do evento organizador da palestra:");
-        String nomeEvento = scanner.nextLine();
-        Evento evento = eventoUtil.buscarEventoPeloNome(nomeEvento);
+        System.out.println("Digite o ID do evento organizador da palestra:");
+        eventoUtil.exibirEventos();
+        int idEvento = scanner.nextInt();
+        scanner.nextLine();
+        Evento evento = eventoUtil.buscarEventoPeloId(idEvento);
         if (evento == null) {
             System.out.println("Evento não encontrado!");
             return;
         }
 
-        System.out.println("Digite o título da palestra:");
-        String tituloPalestra = scanner.nextLine();
-        Palestra palestra = evento.getAgendaPalestras().buscarPalestraPeloTitulo(tituloPalestra);
+        System.out.println("Digite o ID da palestra na qual deseja se inscrever:");
+        evento.getAgendaPalestras().exibirPalestras();
+        int idPalestra = scanner.nextInt();
+        scanner.nextLine();
+        Palestra palestra = evento.getAgendaPalestras().buscarPalestraPeloId(idPalestra);
         if (palestra == null) {
             System.out.println("Palestra não encontrada!");
             return;
@@ -108,7 +112,7 @@ public class MenuUsuario extends Menu {
     }
 
     public void cancelarInscricaoEmPalestra() {
-        System.out.println("Digite o nome do evento organizador da palestra:");
+        System.out.println("Digite o nome do evento organizador da palestra desejada:");
         String nomeEventoCancelar = scanner.nextLine();
         Evento eventoCancelar = eventoUtil.buscarEventoPeloNome(nomeEventoCancelar);
         if (eventoCancelar == null) {
