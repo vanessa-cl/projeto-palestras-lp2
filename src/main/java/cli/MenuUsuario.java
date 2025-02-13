@@ -56,7 +56,7 @@ public class MenuUsuario extends Menu {
     }
 
     public void inscricaoEmPalestra() {
-        System.out.println("Digite o ID do evento organizador da palestra:");
+        System.out.println("Digite o ID do evento organizador da palestra desejada:");
         eventoUtil.exibirEventos();
         int idEvento = scanner.nextInt();
         scanner.nextLine();
@@ -112,17 +112,17 @@ public class MenuUsuario extends Menu {
     }
 
     public void cancelarInscricaoEmPalestra() {
-        System.out.println("Digite o nome do evento organizador da palestra desejada:");
-        String nomeEventoCancelar = scanner.nextLine();
-        Evento eventoCancelar = eventoUtil.buscarEventoPeloNome(nomeEventoCancelar);
+        System.out.println("Digite o ID do evento organizador da palestra:");
+        int idEventoCancelar = scanner.nextInt();
+        Evento eventoCancelar = eventoUtil.buscarEventoPeloId(idEventoCancelar);
         if (eventoCancelar == null) {
             System.out.println("Evento não encontrado!");
             return;
         }
 
-        System.out.println("Digite o título da palestra:");
-        String tituloPalestraCancelar = scanner.nextLine();
-        Palestra palestraCancelar = eventoCancelar.getAgendaPalestras().buscarPalestraPeloTitulo(tituloPalestraCancelar);
+        System.out.println("Digite o ID da palestra na qual deseja cancelar a inscrição:");
+        int idPalestraCancelar = scanner.nextInt();
+        Palestra palestraCancelar = eventoCancelar.getAgendaPalestras().buscarPalestraPeloId(idPalestraCancelar);
         if (palestraCancelar == null) {
             System.out.println("Palestra não encontrada!");
             return;
