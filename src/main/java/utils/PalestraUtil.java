@@ -35,38 +35,12 @@ public class PalestraUtil {
         return resultado;
     }
 
-    public boolean removerPalestra(int id) {
-        boolean resultado = false;
-        for (Palestra palestra : palestras) {
-            if (palestra.getId() == id) {
-                palestras.remove(palestra);
-                try {
-                    resultado = fileUtil.removerLinhaArquivoPeloId(arquivo, id, 0);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("Palestra não encontrada!");
-            }
-        }
-        return resultado;
-    }
-
     public void exibirPalestras() {
         System.out.println("Palestras do evento:");
         for (Palestra palestra : palestras) {
             System.out.println(palestra.toString());
         }
         System.out.println("____________________________________________________________________________________________________________________");
-    }
-
-    public Palestra buscarPalestraPeloTitulo(String titulo) {
-        for (Palestra palestra : palestras) {
-            if (palestra.getTitulo().equals(titulo)) {
-                return palestra;
-            }
-        }
-        return null;
     }
 
     public Palestra buscarPalestraPeloId(int id) {

@@ -54,12 +54,4 @@ public class UsuarioUtil {
         return usuarios;
     }
 
-    public void exibirUsuarios() {
-        System.out.println("Usuários cadastrados:");
-        for (Usuario usuario : usuarios) {
-            System.out.println(usuario.toString());
-        }
-        System.out.println("____________________________________________________________________________________________________________________");
-    }
-
 }

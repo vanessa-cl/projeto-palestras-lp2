@@ -94,7 +94,7 @@ public class MenuUsuario extends Menu {
                 return;
             }
 
-            boolean sucessoFilaEspera = palestra.getFilaEspera().adicionarOuvinte(new Ouvinte(usuarioLogado.getId(), palestra.getId()));
+            boolean sucessoFilaEspera = palestra.getFilaEspera().adicionarOuvinteFim(new Ouvinte(usuarioLogado.getId(), palestra.getId()));
             if (!sucessoFilaEspera) {
                 System.out.println("Erro ao realizar inscrição na lista de espera!");
                 return;

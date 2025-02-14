@@ -30,7 +30,7 @@ public class FilaEsperaUtil {
         }
     }
 
-    public boolean adicionarOuvinte(Ouvinte ouvinte) {
+    public boolean adicionarOuvinteFim(Ouvinte ouvinte) {
         boolean resultado = false;
         filaEspera.add(ouvinte);
         try {
@@ -52,14 +52,6 @@ public class FilaEsperaUtil {
             e.printStackTrace();
         }
         return ouvinteEncontrado;
-    }
-
-    public void listarOuvintes() {
-        System.out.println("Fila de espera:");
-        for (Ouvinte ouvinte : filaEspera) {
-            System.out.println(ouvinte.toString());
-        }
-        System.out.println("____________________________________________________________________________________________________________________");
     }
 
     public int getQuantidadeOuvintes() {

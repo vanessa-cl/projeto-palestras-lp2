@@ -25,15 +25,6 @@ public class EventoUtil {
         return resultado;
     }
 
-    public Evento buscarEventoPeloNome(String nome) {
-        for (Evento evento : eventos) {
-            if (evento.getNome().equalsIgnoreCase(nome)) {
-                return evento;
-            }
-        }
-        return null;
-    }
-
     public Evento buscarEventoPeloId(int id) {
         for (Evento evento : eventos) {
             if (evento.getId() == id) {

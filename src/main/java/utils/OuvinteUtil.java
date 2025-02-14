@@ -59,14 +59,6 @@ public class OuvinteUtil {
         return ouvinteAux;
     }
 
-    public String exibirOuvintes() {
-        String ouvintesString = "Lista de Ouvintes:\n";
-        for (Ouvinte ouvinte : listaOuvintes) {
-            ouvintesString += ouvinte.toString() + "\n________________________________________________________________________";
-        }
-        return ouvintesString;
-    }
-
     public void lerOuvintes(int idPalestra) {
         ArrayList<String> ouvintesDB = fileUtil.lerArquivo(arquivo);
         for (String dado : ouvintesDB) {
